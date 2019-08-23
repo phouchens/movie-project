@@ -39,5 +39,4 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 	echo '</section>';
 	include ("../includes/footer.php");
 }
-
 ?>

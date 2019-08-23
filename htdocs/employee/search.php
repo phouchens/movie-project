@@ -3,6 +3,7 @@ session_start();
 
 if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){ 
 	echo "You do not have permission to view this page!";
+	echo "<br><a href=../Home/index.php>Home</a>"; 
 	exit();
 
 }else{
@@ -14,7 +15,6 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 	 
 	
 	if (empty($_POST['firstName'])||!empty($_POST['lastName'])){
-		//$id = mysqli_real_escape_string($dbc, $_POST['id']); 
 		$firstName = mysqli_real_escape_string($dbc, $_POST['firstName']); 
 		$lastName = mysqli_real_escape_string($dbc, $_POST['lastName']); 
 		

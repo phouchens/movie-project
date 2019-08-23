@@ -58,49 +58,46 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 		echo "<td><a class='button is-primary' href=updateform.php?id=".$row['employeeId'].">Update</a></td></tr>"; 
 	} 
 
-	echo "<nav class='level'>
-	<div class='level-item has-text-centered'>";
-echo ("<a class='button is-primary' href=add.php>Add a new Employee</a><p>"); 
-echo "</div>
-	<div class='level-item has-text-centered'>";
-echo ("<a class='button is-primary' href=searchform.php>Search Employees</a><p>"); 
-echo "</div>
-</nav>";
+
 	echo "</table>";      
 	
 
        
 	mysqli_close($dbc); 
 
-	//Make the links to other pages if necessary.
 	if($pages>1){
 		echo "<br/><nav class='pagination'>";
-		//Determine what page the script is on:
 		$current_page = ($start/$display) + 1;
-		//If it is not the first page, make a Previous button:
 		if($current_page != 1){
 			echo '<a class="pagination-link" href="index.php?s='. ($start - $display) . '&p=' . $pages. '"> Previous </a>';
 		}
 		echo '<ul class="pagination-list">';
-		//Make all the numbered pages:
+		
 		for($i = 1; $i <= $pages; $i++){
-			if($i != $current_page){ // if not the current pages, generates links to that page
+			if($i != $current_page){
 				
 				echo '<li><a class="pagination-link" href="index.php?s='. (($display*($i-1))). '&p=' . $pages .'"> ' . $i . ' </a></li>';
-			}else{ // if current page, print the page number
+			}else{ 
 				echo ''. $i. '';
 			}
-		} //End of FOR loop
+		} 
 		echo '</ul>';
-		//If it is not the last page, make a Next button:
 		if($current_page != $pages){
 			echo '<a class="pagination-link" href="index.php?s=' .($start + $display). '&p='. $pages. '"> Next </a>';
 		}
 		
-		echo '</nav>';  //Close the table.
+		echo '</nav>';  
 		echo "</section>";
-	}//End of pages links
+	}
 	
+	echo "<nav class='level'>
+	<div class='level-item has-text-centered'>";
+	echo ("<a class='button is-primary' href=add.php>Add a new Employee</a><p>"); 
+	echo "</div>
+		<div class='level-item has-text-centered'>";
+	echo ("<a class='button is-primary' href=searchform.php>Search Employees</a><p>"); 
+	echo "</div>
+		</nav>";
 	include ('../includes/footer.php');
 }
 ?>

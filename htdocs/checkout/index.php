@@ -1,19 +1,19 @@
 <?php
-session_start(); 
-include ('../includes/header.php'); 
+session_start();
+include ('../includes/header.php');
 
-if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){ 
+if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
 	echo "You do not have permission to view this page!";
-	echo "<br><a href=../Home/index.php>Home</a>"; 
+	echo "<br><a href=../Home/index.php>Home</a>";
 	exit();
 }else{
-    
+
 	?>
 
     <h2 class='is-size-2  has-text-centered'>Checkout</h2>
-<form action="checkout.php" method="post" id="form-container">	
+<form action="checkout.php" method="post" id="form-container">
 	<div class='columns'>
-            <div class='column' id="form-container">
+            <div class='column'>
 
                     <div class="field">
                         <label class="label">Last Name:</label>
@@ -29,37 +29,29 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
                         </div>
                     </div>
 
-                    
                     <div class="field">
-                        <div class="field-body">
+                            <label class="label">Customer ID:</label>
+                            <div class="control">
+                                <input class="input" name="customerId" type="number" required>
+                            </div>
+                        </div>
 
                         <div class="field">
-                                <label class="label">Customer ID:</label>
-                                <div class="control">
-                                    <input class="input" name="customerId" type="number" required>
-                                </div>
+                            <label class="label">Rental Date</label>
+                            <div class="control">
+                                <input class="input" readonly name="rentalDate" type="date" value="<? echo date('Y-m-d'); ?>">
                             </div>
-                            
-                            <div class="field">
-                                <label class="label">Rental Date</label>
-                                <div class="control">
-                                    <input class="input" readonly name="rentalDate" type="date" value="<? echo date('Y-m-d'); ?>">
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="field">
-                                <label class="label">Rental Return Date</label>
-                                <div class="control">
-                                    <input class="input" readonly name="returnDate" type="dates"  value="<? $today=date("Y-m-d"); echo date('Y-m-d', strtotime("$today +10 days")); ?>">
-                                </div>
+                        <div class="field">
+                            <label class="label">Rental Return Date</label>
+                            <div class="control">
+                                <input class="input" readonly name="returnDate" type="dates"  value="<? $today=date("Y-m-d"); echo date('Y-m-d', strtotime("$today +10 days")); ?>">
                             </div>
-                        </div>  
-                    </div>
-    
+                        </div>
             </div>
 
-
-                <div class='column' id="form-container">
+            <div class='column'>
                     <div class="field">
                         <div class="field-body">
                             <div class="field">
@@ -72,7 +64,7 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
                             </div>
                         </div>
                     </div>
-                        
+
                     <div class="field">
                         <div class="field-body">
                             <div class="field">
@@ -92,18 +84,19 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
                                 </div>
                             </div>
                         </div>
-                    </div>          
-                    <br/>
-                    <br/>
-                    <input class="button is-large is-fullwidth is-primary" type=submit value="checkout"/>
-                    <input type="hidden" name="movieId" id="movieId">"
                 </div>
+                <br/>
+                <br/>
+                <input class="button is-large is-fullwidth is-primary" type=submit value="checkout"/>
+                <input type="hidden" name="movieId" id="movieId">
+            </div>
     </div>
 </form>
 
 <script>
 // Jquery for typeahead functionality
 $(document).ready(function(){
+    $('.typeahead').typeahead('destroy')
     var movies = []
     $('#movieTitle').typeahead({
         source: function(query, process){
@@ -137,5 +130,5 @@ $(document).ready(function(){
 <?
     echo '</section>';
     include ("../includes/footer.php");
-} // end sql if
+} // end auth else
 ?>

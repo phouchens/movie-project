@@ -9,5 +9,7 @@
     </p>
   </div>
 </footer>
+<script src="../includes/jquery.canvasjs.min.js"></script>
+
 </body>
 </html>

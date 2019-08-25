@@ -19,11 +19,11 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 			echo "<strong>".$row['title']."</strong>"; 
 		} 
 		echo "<div>";
-		echo "<br>Are you sure that you want to delete this record?<br>";
+		echo "<br>Are you sure that you want to delete this employee?<br>";
 		echo "<a class='button is-danger' href=delete.php?id=".$id.">YES</a> 
 			<a class='button is-light' href=index.php>NO</a></div>";          
 	}else{ 
-		echo '<p>There is no such record.</p>';
+		echo '<p>There is no such employee.</p>';
 	}
     echo '</section>';
     

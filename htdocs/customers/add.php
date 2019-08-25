@@ -34,21 +34,21 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
 	<h4>Add a new customer</h4>
 	<form action="<? echo $PHP_SELF;?>" method="post" id="form-item">
 		<div class="field">
- 			<label class="label">First Name:</label>
+ 			<label class="field-label">First Name: (Required)</label>
   			<div class="control">
     			<input class="input" name="firstName" type="text" size=50 required>
   			</div>
 		</div>
 
         <div class="field">
- 			<label class="label">Last Name:</label>
+ 			<label class="field-label">Last Name: (Required)</label>
   			<div class="control">
     			<input class="input" name="lastName" type="text" size=50 required>
   			</div>
 		</div>
 
         <div class="field">
-			<label class="field-label ">Email Address:</label>
+			<label class="field-label ">Email Address: (Required)</label>
 			<div class="control">
 			<input class="input" type="text" name="email" size="20" maxlength="40" placeholder="youremail@provider.com"required/>
 			</div>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
 		</div>
 
 		<div class="field">
-			<label class="field-label ">Password:</label>
+			<label class="field-label ">Password: (Required)</label>
 			<div class="control">
 			<input class="input" type="password" name="password" size="10" maxlength="20" required/>
 			</div>

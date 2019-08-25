@@ -50,7 +50,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		echo "<tr><td>".$row['employeeId']."</td>"; 
-		echo "<td>".$row['role']."</td>"; 
+		echo "<td>".($row['role'] == 5 ? 'Manager': 'Employee')."</td>";
         echo "<td>".$row['firstName']."</td>";
         echo "<td>".$row['lastName']."</td>";
         echo "<td>".$row['email']."</td>";
@@ -61,8 +61,6 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 
 	echo "</table>";      
 	
-
-       
 	mysqli_close($dbc); 
 
 	if($pages>1){

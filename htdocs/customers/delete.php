@@ -15,9 +15,9 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
     echo '<section class="section" id="form-container">';
     
 	if ($result){
-		echo "The selected record has been deleted."; 
+		echo "The selected customer has been deleted."; 
 	}else {
-		echo "The selected record could not be deleted."; 
+		echo "The selected customer could not be deleted."; 
     }
     
 	echo "<p><a class='button is-primary' href=index.php>Back to Customers</a>"; 

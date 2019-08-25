@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){ 
-	echo "You are not logged in!";
+if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){ 
+	echo "You do not have access to view this page";
 	exit();
 }else{
   
@@ -25,7 +25,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
     $movieQuery = "UPDATE movie SET rented=1, returnDate='$returnDate' WHERE movieId='$movieId'";
     $customerQuery = "SELECT * FROM customer WHERE customerId = '$customerId'";
     $cusomerResult =  @mysqli_query ($dbc, $customerQuery);
-	$num = mysqli_num_rows($cusomerResult);
+    $num = mysqli_num_rows($cusomerResult);
 
     if ($num == 0) {
         echo "<div id='form-container'>

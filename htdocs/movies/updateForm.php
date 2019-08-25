@@ -87,7 +87,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
         <div class="field">
 			<label class="field-label ">Actors:</label>
 			<div class="control">
-			<input value="<? echo $row['actors']; ?>"class="input" type="text" name="actors"  size="40" />
+			<input value="<? echo $row['actors']; ?>"class="input" type="text" name="actors"  size="40" required />
 			</div>
 		</div>
 

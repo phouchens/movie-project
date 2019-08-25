@@ -13,13 +13,10 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
 	echo '<section class="section">';
 	 
 	
-	if (empty($_POST['firstName'])||!empty($_POST['lastName'])){
-		//$id = mysqli_real_escape_string($dbc, $_POST['id']); 
-		$firstName = mysqli_real_escape_string($dbc, $_POST['firstName']); 
+	if (!empty($_POST['lastName'])){
 		$lastName = mysqli_real_escape_string($dbc, $_POST['lastName']); 
 		
-		$query="SELECT * FROM customer WHERE (firstName LIKE '%$firstName%')
-		AND (lastName LIKE '%$lastName%')";
+		$query="SELECT * FROM customer WHERE (lastName LIKE '%$lastName%')";
 	}else {
 		$query="SELECT * FROM customer";
 	}

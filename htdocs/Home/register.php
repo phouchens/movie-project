@@ -1,40 +1,33 @@
 <?php 
-// Include header.php
 include("../includes/header.php");
-// Check if the form has been submitted.
 if (isset($_POST['submitted'])) {
-	require_once ('../../mysqli_connect.php'); // Connect to the db.
-	$errors = array(); // Initialize error array.
+	require_once ('../../mysqli_connect.php'); 
+	$errors = array(); 
 
-	// Check for a first name.
 	if (empty($_POST['first_name'])) {
 		$errors[] = 'You forgot to enter your first name.';
 	} else {
 		$first_name = mysqli_real_escape_string($dbc, $_POST['first_name']);
 	}
 
-	// Check for a last name.
 	if (empty($_POST['last_name'])) {
 		$errors[] = 'You forgot to enter your last name.';
 	} else {
 		$last_name = mysqli_real_escape_string($dbc, $_POST['last_name']);
 	}
 
-	// Check for an phone address.
 	if (empty($_POST['phone'])) {
 		$errors[] = 'You forgot to enter your phone number.';
 	} else {
 		$email = mysqli_real_escape_string($dbc, $_POST['phone']);
 	}
 
-	// Check for an email address.
 	if (empty($_POST['email'])) {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
 		$email = mysqli_real_escape_string($dbc, $_POST['email']);
 	}
 
-	// Check for a password and match against the confirmed password.
 	if (!empty($_POST['password1']) && !empty($_POST['password2'])) {
 		if ($_POST['password1'] != $_POST['password2']) {
 			$errors[] = 'Your password did not match the confirmed password.';
@@ -45,51 +38,49 @@ if (isset($_POST['submitted'])) {
 		$errors[] = 'You forgot to enter your password.';
 	}
 
-	if (empty($errors)) { // If everything's OK.
-		// Register the user in the database.
-		// Check for previous registration.
+	if (empty($errors)) { 
 		$query = "SELECT customerId FROM customer WHERE email='$email'";
 		$result = mysqli_query($dbc, $query);
-		if (mysqli_num_rows($result) == 0) { // if there is no such email address
-			// Make the query.
+		if (mysqli_num_rows($result) == 0) {
 			$role = 3;
 			$lateFeeFlag = false;
 			$query = "INSERT INTO customer (role, firstName, lastName,  email, phone, address,  lateFeeFlag, password) 
 			VALUES ('$role', '$first_name', '$last_name', '$email', '$phone', null, '$lateFeeFlag', '$password' )";		
-			$result = mysqli_query ($dbc, $query); // Run the query.
-			if ($result) { // If it ran OK.
+			$result = mysqli_query ($dbc, $query); 
+			if ($result) {
+				echo "<section id='form-container'>";
 				echo "<p>You are now registered. Please, login to view our movies!.</p>";
-				echo "<a href=login.php>Login</a>";
+				echo "<a class='button is-primary' href=login.php>Login</a>";
+				echo "</section>";
 				exit();
-			} else { // If it did not run OK.
-				$errors[] = 'You could not be registered due to a system error. We apologize for any inconvenience.'; // Public message.
-				$errors[] = mysqli_error($dbc); // MySQL error message.
+			} else { 
+				$errors[] = 'You could not be registered due to a system error. We apologize for any inconvenience.'; 
+				$errors[] = mysqli_error($dbc); 
 			}
 
-		} else { // Email address is already taken.
+		} else { 
 			$errors[] = 'The email address has already been registered.';
 		}
 
 	} // End of if (empty($errors)) IF.
 
-	mysqli_close($dbc); // Close the database connection.
+	mysqli_close($dbc); 
 
-} else { // Form has not been submitted.
+} else { 
 	$errors = NULL;
-} // End of the main Submit conditional.
+} 
 
-// Begin the page now.
-if (!empty($errors)) { // Print any error messages.
+if (!empty($errors)) {
 	echo '<h1>Error!</h1>
 	<p>The following error(s) occurred:<br />';
-	foreach ($errors as $msg) { // Print each error.
+	foreach ($errors as $msg) { 
 		echo "$msg<br />";
 	}
 	echo '</p>';
 	echo '<p>Please try again.</p>';
 }
 
-// Create the form.
+
 ?>
 <section class="section" id="form-container">
 <h1>Register</h1>
@@ -143,6 +134,5 @@ if (!empty($errors)) { // Print any error messages.
 	</form>
 </section>
 <?php
-// Include footer.php
 include("../includes/footer.php");
 ?>

@@ -12,12 +12,6 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 <h2>Search for an Employee</h2>
 <form action="search.php" method="post" id="form-item">
 	<div class="field">
-		<label class="label">First Name:</label>
-		<div class="control">
-			<input class="input" name="firstName" size=50 value="<? echo $row['firstName'];?>">
-		</div>
-	</div>
-	<div class="field">
 		<label class="label">Last Name:</label>
 		<div class="control">
 			<input class="input" name="lastName" size=50 value="<? echo $row['lastName'];?>">

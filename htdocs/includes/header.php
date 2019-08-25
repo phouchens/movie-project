@@ -40,7 +40,10 @@ if (isset($_SESSION['email'])){
         if ($_SESSION['role'] == 5) { 
             echo "<a class='navbar-item' href='../employee/index.php'>
                     Employee Management
-                  </a>";
+                  </a>
+                  <a class='navbar-item' href='../reports/index.php'>
+                  Reports
+                </a>";
         }
         if ($_SESSION['role'] != 3) {
           echo "<a class='navbar-item' href='../checkout/index.php'>
@@ -49,9 +52,6 @@ if (isset($_SESSION['email'])){
                 <a class='navbar-item' href='../checkin/index.php'>
                 Check-in
               </a>
-                <a class='navbar-item' href='../reports/index.php'>
-                  Reports
-                </a>
                 <a class='navbar-item' href='../customers/index.php'>
                   Customer Managment
                 </a>";

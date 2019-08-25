@@ -21,10 +21,10 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
 	$result = @mysqli_query ($dbc, $query); 
 	echo '<section class="section" id="form-container">';
 	if ($result){
-		echo "<center><p><strong>The selected record has been updated.</strong></p>"; 
+		echo "<center><p><strong>The selected customer has been updated.</strong></p>"; 
 		echo "<a class='button is-primary' href=index.php>Home</a></center>"; 
 	}else {
-		echo "<p>The record could not be updated due to a system error" . mysqli_error() . "</p>"; 
+		echo "<p>The customer could not be updated due to a system error" . mysqli_error() . "</p>"; 
 	}
 	mysqli_close($dbc);
 

@@ -18,8 +18,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 		$firstName = mysqli_real_escape_string($dbc, $_POST['firstName']); 
 		$lastName = mysqli_real_escape_string($dbc, $_POST['lastName']); 
 		
-		$query="SELECT * FROM employee WHERE (firstName LIKE '%$firstName%')
-		AND (lastName LIKE '%$lastName%')";
+		$query="SELECT * FROM employee WHERE (lastName LIKE '%$lastName%')";
 	}else {
 		$query="SELECT * FROM employee";
 	}
@@ -46,15 +45,15 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 		       
 	} else { 
 		echo '<p>Your search hits no result.</p>';
-		echo "<nav class='level'>
-		<div class='level-item has-text-centered'>";
-		echo ("<a class='button is-primary' href=index.php>All Employees</a><p>");
-		echo 		"</div>
-				<div class='level-item has-text-centered'>";
-		echo ("<a class='button is-primary' href=searchform.php>Back</a><p>");
-		echo   		"</div>
-		</nav>";
 	}
+	echo "<nav class='level'>
+	<div class='level-item has-text-centered'>";
+	echo ("<a class='button is-primary' href=index.php>All Employees</a><p>");
+	echo 		"</div>
+			<div class='level-item has-text-centered'>";
+	echo ("<a class='button is-primary' href=searchform.php>Back</a><p>");
+	echo   		"</div>
+	</nav>";
 	mysqli_close($dbc); 
 echo '</section>';
 

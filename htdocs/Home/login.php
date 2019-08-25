@@ -9,17 +9,16 @@ function setSession($row) {
 	$_SESSION['email'] = $row[4];
 }
 
-// Check if the form has been submitted.
+
 if (isset($_POST['submitted'])) {
-	require_once ('../../mysqli_connect.php'); // Connect to the db.
-	$errors = array(); // Initialize error array.
-	// Check for an email address.
+	require_once ('../../mysqli_connect.php'); 
+	$errors = array(); 
 	if (empty($_POST['email'])) {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
 		$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 	}
-	// Check for a password.
+
 	if (empty($_POST['password'])) {
 		$errors[] = 'You forgot to enter your password.';
 	} else {
@@ -39,28 +38,30 @@ if (isset($_POST['submitted'])) {
 			setSession($employeeRow);
 			header("Location:../checkout/index.php");
 			exit(); 
-		} else { // No record matched either query.
+		} else { 
 			$errors[] = 'The email address and password entered do not match those on file.';
 		}
-	} // End of if (empty($errors)) IF.
+	} 
 	mysqli_close($dbc); 
-} else { // Form has not been submitted.
+} else { 
 	$errors = NULL;
-} // End of the main Submit conditional.
+} 
 
-// Begin the page.
+
 $page_title = 'Login';
 include ('../includes/header.php');
-if (!empty($errors)) { // Print any error messages.
-	echo '<h1 id="mainhead">Error!</h1>
-	<p class="error">The following error(s) occurred:<br />';
-	foreach ($errors as $msg) { // Print each error.
-		echo " - $msg<br />\n";
-	}
-	echo '</p><p>Please try again.</p>';
+if (!empty($errors)) { 
+	echo '
+		<section class="section" id="form-container">
+			<font color=red><h1 id="mainhead">Error!</h1>
+			<p class="error">The following error(s) occurred:<br />';
+			foreach ($errors as $msg) { 
+				echo " - $msg<br />\n";
+			}
+	echo 	'</p><p>Please try again.</p></font>
+		</section>';
 }
 
-// form.
 ?>
 <section class="section" id="form-container">
 <h2>Please login here.</h2>

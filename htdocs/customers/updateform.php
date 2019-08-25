@@ -18,24 +18,24 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){
 	if ($num > 0) {
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 ?>
-	<h2 class='is-size-2'>Update Record</h2>
+	<h2 class='is-size-2'>Update Customer</h2>
 	<form action="update.php" method="post" id="form-item">		
 		<div class="field">
- 			<label class="label">First Name:</label>
+ 			<label class="field-label">First Name: (Required)</label>
   			<div class="control">
     			<input class="input" name="firstName" type="text" size=50 required value="<? echo $row['firstName']; ?>">
   			</div>
 		</div>
 
         <div class="field">
- 			<label class="label">Last Name:</label>
+ 			<label class="field-label">Last Name: (Required)</label>
   			<div class="control">
     			<input class="input" name="lastName" type="text" size=50 required value="<? echo $row['lastName']; ?>">
   			</div>
 		</div>
 
         <div class="field">
-			<label class="field-label ">Email Address:</label>
+			<label class="field-label ">Email Address: (Required)</label>
 			<div class="control">
 			<input class="input" type="text" name="email" size="20" maxlength="40" placeholder="youremail@provider.com"required value="<? echo $row['email']; ?>"/>
 			</div>

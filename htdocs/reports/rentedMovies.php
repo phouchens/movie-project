@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email']) || $_SESSION['role'] == 3){ 
+if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){ 
     echo "You do not have permission to view this page!";
     echo "<br><a href=../Home/index.php>Home</a>"; 
 	exit();
@@ -78,7 +78,7 @@ window.onload = function() {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	title: {
-		text: "Movie Stock"
+		text: "Available Movies"
 	},
 	subtitles: [{
 		text: "As of " + new Date()

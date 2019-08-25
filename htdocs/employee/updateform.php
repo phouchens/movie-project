@@ -22,31 +22,31 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] != 5){
 	<form action="update.php" method="post" id="form-item">
 
 		<div class="field">
- 			<label class="label">First Name:</label>
+ 			<label class="field-label">First Name: (required)</label>
   			<div class="control">
     			<input class="input" name="firstName" type="text" size=50 required value="<? echo $row['firstName']; ?>">
   			</div>
 		</div>
 
         <div class="field">
- 			<label class="label">Last Name:</label>
+ 			<label class="field-label">Last Name: (required)</label>
   			<div class="control">
     			<input class="input" name="lastName" type="text" size=50 required value="<? echo $row['lastName']; ?>">
   			</div>
 		</div>
 		
 		<div class="field">
- 			<label class="label">Role:</label>
+ 			<label class="field-label">Role: (required)</label>
              <div class="select" >
-                <select name="role">
-                    <option>Select Role</option>
-                    <option value="5">Admin</option>
+                <select name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="5">Manager</option>
                     <option value="4">Employee</option>
                 </select>
             </div>
         </div>
         <div class="field">
-			<label class="field-label ">Email Address:</label>
+			<label class="field-label ">Email Address: (required)</label>
 			<div class="control">
 			<input class="input" type="text" name="email" size="20" maxlength="40" placeholder="youremail@provider.com"required value="<? echo $row['email']; ?>"/>
 			</div>

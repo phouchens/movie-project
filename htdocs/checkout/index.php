@@ -46,7 +46,7 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
                         <div class="field">
                             <label class="label">Rental Return Date</label>
                             <div class="control">
-                                <input class="input" readonly name="returnDate" type="dates"  value="<? $today=date("Y-m-d"); echo date('Y-m-d', strtotime("$today +10 days")); ?>">
+                                <input class="input" readonly name="returnDate" type="date"  value="<? $today=date("Y-m-d"); echo date('Y-m-d', strtotime("$today +7 days")); ?>">
                             </div>
                         </div>
             </div>

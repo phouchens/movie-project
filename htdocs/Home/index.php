@@ -1,11 +1,6 @@
 <?php 
-session_start();
 
-if (!isset($_SESSION['email'])){
-include ('../includes/header.php'); //may not need this
-}else {
 include ('../includes/header.php');
-}
 ?>
 
 <section id="movies" class="hero is-dark is-fullheight">

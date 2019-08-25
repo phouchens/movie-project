@@ -7,7 +7,7 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
 	echo "<br><a href=../Home/index.php>Home</a>"; 
 	exit();
 }else{
-	echo "<h1 class='is-size-2 has-text-centered'>Checkin</h1>";
+	echo "<h1 class='is-size-2 has-text-centered'>Check-in</h1>";
 ?>
 <form action="checkin.php" method="post" id="form-container">
 		<div class="field is-fullwidth">
@@ -22,7 +22,7 @@ if (!isset($_SESSION['email']) && $_SESSION['role'] == 3){
 				</div>
 			</div>
 		</div>
-		<input class="button is-large is-primary" type=submit value="checkin"/>
+		<input class="button is-large is-primary" type=submit value="check-in"/>
 		<input type="hidden" name="movieId" id="movieId">
 		<input type="hidden" name="transactionId" id="transactionId">
 </form>
